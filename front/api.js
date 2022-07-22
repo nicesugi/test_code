@@ -75,3 +75,42 @@ async function handleLogout() {
 
     location.reload()
 }
+
+
+// 게시글 전체 조회 (index 페이지)
+async function getArticles() {
+    const response = await fetch(`${backend_base_url}/articles/`, {
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+        },
+        method : 'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+
+// 게시글 작성
+async function postArticle() {
+    const title = document.getElementById('article_title').value
+    const content = document.getElementById('article_content').value
+    const image = document.getElementById('article_image').files[0]
+
+    const formdata = new FormData()
+
+    formdata.append('title', title)
+    formdata.append('content', content)
+    formdata.append('image', image)
+
+    const response = await fetch(`${backend_base_url}/articles/`, {
+        method : 'POST',
+        body : formdata
+    })
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/front/index.html`);
+    } else {
+        alert(response.status)
+    }
+}
