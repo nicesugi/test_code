@@ -6,7 +6,8 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
+__pycache__/
+migrations/
 # Icon must end with two \r
 Icon
 
