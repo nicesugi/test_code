@@ -5,7 +5,7 @@ from users.models import User as UserModel
 class UserSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields= "__all__"
+        fields= '__all__'
 
     def create(self, *args, **kwargs):
         user = super().create(*args, **kwargs)
@@ -25,4 +25,4 @@ class UserSignupSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = "__all__"
+        fields = '__all__'
