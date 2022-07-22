@@ -2,8 +2,15 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+from users.jwt_claim_serializers import ABCTokenObtainPairSerializer
+
 from users.serializers import UserSerializer
 from users.serializers import UserSignupSerializer
+
+
+class ABCTokenObtainPairView(TokenObtainPairView):
+    serializer_class = ABCTokenObtainPairSerializer
 
 
 class UserView(APIView):
