@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
     'users',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',    # '~~common.CommonMiddleware' 보다 위에 위치해야함
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -118,6 +120,11 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser'
     ]
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+]
 
 AUTH_USER_MODEL = 'users.User'
 
